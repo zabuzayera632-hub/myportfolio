@@ -1,0 +1,13 @@
+# built site — it is recreated by `python3 build.py`
+dist/
+emblem_a-site.zip
+
+# old copies and working folders
+_backup*/
+_scan/
+.taste-skill/
+__pycache__/
+*.pyc
+
+# system files
+.DS_Store
