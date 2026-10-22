@@ -11,6 +11,10 @@ def translate(html):
 
 SITE=""     # после покупки домена впишите сюда адрес, например "https://emblem-a.ru", и запустите: python3 build.py
 METRIKA=""  # номер счётчика Яндекс Метрики (только цифры), если подключите
+# GitHub Pages builds pass the address in SITE_URL; a local build keeps SITE above
+SITE=os.environ.get("SITE_URL",SITE).rstrip("/")
+from urllib.parse import urlparse as _urlparse
+BASE=(_urlparse(SITE).path.rstrip("/")+"/") if SITE else "/"   # "/" on your own domain, "/myportfolio/" on GitHub Pages
 
 RATE=84.95  # RUB per USD, fallback (open.er-api.com, 7 Oct 2026); live rate is fetched in the browser
 def usd_round(r):
@@ -303,8 +307,8 @@ cpage=f'''<main class="contacts-page">{contact("h1")}
 <section id="faq"><div class="wrap split"><div class="split-head"><h2>Частые вопросы</h2>{sk("sparkle","sk-faq")}</div>
 <div class="faqlist">{faqs}</div></div></section></main>'''
 W("contacts.html",head("Контакты — emblem_a","Как связаться с emblem_a: Telegram, почта и телефон")+nav("contacts.html")+cpage+foot())
-nf=f'''<main><section class="notfound"><div class="wrap">{sk("spiral","sk-404")}<h1>Такой страницы нет</h1><p class="lead">Возможно, ссылка устарела. Начните с главной или посмотрите кейсы.</p><div class="cta-row"><a class="btn primary" href="/index.html">На главную</a><a class="btn ghost" href="/cases.html">Кейсы</a></div></div></section></main>'''
-W("404.html",head("Страница не найдена — emblem_a","Такой страницы нет","/")+nav("","/")+nf+foot("/"))
+nf=f'''<main><section class="notfound"><div class="wrap">{sk("spiral","sk-404")}<h1>Такой страницы нет</h1><p class="lead">Возможно, ссылка устарела. Начните с главной или посмотрите кейсы.</p><div class="cta-row"><a class="btn primary" href="{BASE}index.html">На главную</a><a class="btn ghost" href="{BASE}cases.html">Кейсы</a></div></div></section></main>'''
+W("404.html",head("Страница не найдена — emblem_a","Такой страницы нет",BASE)+nav("",BASE)+nf+foot(BASE))
 
 # ---------- prices
 prices=f'''<main><section style="padding-bottom:40px"><div class="wrap"><div class="head"><h1 >Сколько стоит ролик</h1><p class="lead">Итоговая цена зависит от длины ролика, сложности сцен и количества версий. Ниже ориентиры, точную стоимость назову после короткого брифа.</p></div>
