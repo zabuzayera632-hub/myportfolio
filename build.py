@@ -133,7 +133,7 @@ def head(title,desc,path=""):
 <meta property="og:type" content="website"><meta property="og:site_name" content="emblem_a"><meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:locale" content="ru_RU">{ogimg}
 <meta http-equiv="Content-Security-Policy" content="{CSP}"><meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preload" href="{path}assets/fonts/geologica-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{path}assets/style.css?v=44">{ym}</head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="marker" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency=".27" numOctaves="2" seed="14" result="g"/><feDisplacementMap in="SourceGraphic" in2="g" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter></svg>'''
+<link rel="stylesheet" href="{path}assets/style.css?v=45">{ym}</head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="marker" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency=".27" numOctaves="2" seed="14" result="g"/><feDisplacementMap in="SourceGraphic" in2="g" scale="3.2" xChannelSelector="R" yChannelSelector="G"/></filter></svg>'''
 def nav(cur,p=""):
     L=[("index.html","Главная"),("cases.html","Кейсы"),("prices.html","Цены"),("contacts.html","Контакты")]
     a="".join(f'<a href="{p}{h}"{" aria-current=\"page\"" if h==cur else ""}>{t}</a>' for h,t in L)
@@ -145,7 +145,7 @@ ABOUT_IMG=('<img src="assets/img/about.jpg" alt="emblem_a" loading="lazy">' if o
 def contact(h="h2"): return f'''<section id="contact" class="contact-sec"><div class="wrap"><div class="contact"><div class="contact-main">
 <{h}>Ролик для вашего бренда начинается с одного сообщения</{h}><p>Опишите, что нужно, и я предложу формат ролика, сроки и стоимость. Отвечаю в течение нескольких часов.</p><div class="cta-row"><a class="btn light" href="https://t.me/emblem_a" target="_blank" rel="noopener">{ico("tg")}Написать в Telegram</a><button type="button" class="btn outline-light" data-copy="{BRIEF}" data-done="Скопировано" data-fail="Не получилось скопировать">Скопировать шаблон брифа</button></div><div class="contacts">{chips()}</div></div>
 <aside class="contact-aside" aria-labelledby="brief-tips">{sk("plane","sk-contact")}<{"h2" if h=="h1" else "h3"} id="brief-tips">Что написать в первом сообщении</{"h2" if h=="h1" else "h3"}><ol><li>Что нужно показать</li><li>Для какой площадки</li><li>К какому сроку</li></ol></aside></div></div></section>'''
-FOOT='<footer><div class="wrap"><div class="foot-row"><span>© 2026 emblem_a</span><span>Видео и визуал на нейросетях</span><span class="foot-links"><a href="{p}contacts.html">Контакты</a><a href="https://t.me/emblem_a" target="_blank" rel="noopener">Telegram</a></span></div></div></footer><script src="{p}assets/lenis.min.js?v=1"></script><script src="{p}assets/main.js?v=44"></script></body></html>'
+FOOT='<footer><div class="wrap"><div class="foot-row"><span>© 2026 emblem_a</span><span>Видео и визуал на нейросетях</span><span class="foot-links"><a href="{p}contacts.html">Контакты</a><a href="https://t.me/emblem_a" target="_blank" rel="noopener">Telegram</a></span></div></div></footer><script src="{p}assets/lenis.min.js?v=1"></script><script src="{p}assets/main.js?v=45"></script></body></html>'
 def foot(p=""): return FOOT.replace("{p}",p)
 
 IMG={"magnit","cakes","khl-monopoly","kubok-sbera","yoshida","vladkon","zargus"}
@@ -172,7 +172,7 @@ DECO={  # name: (viewBox, inner svg)
  "heart":("0 0 200 180",'<path pathLength="1" d="M 100 160 C 40 120 10 80 30 46 C 50 14 92 24 100 58 C 108 24 150 14 170 46 C 190 80 160 120 100 160"/>'),
  "plane":("0 0 220 180",'<path pathLength="1" d="M 14 84 L 204 18 L 150 160 L 104 104 Z"/><path pathLength="1" d="M 104 104 L 204 18"/><path pathLength="1" d="M 104 104 L 98 150 L 126 126"/>'),
 }
-def sk(kind,cls): vb,body=DECO[kind]; return f'<svg class="sketch-deco {cls}" viewBox="{vb}" aria-hidden="true"><g filter="url(#marker)">{body}</g></svg>'
+def sk(kind,cls): vb,body=DECO[kind]; par=' preserveAspectRatio="none"' if kind=="circle" else ''; return f'<svg class="sketch-deco {cls}" viewBox="{vb}"{par} aria-hidden="true"><g filter="url(#marker)">{body}</g></svg>'   # the oval may stretch to fit the price
 # reviews rebuilt from the Telegram screenshots: text is verbatim, names are left out.
 # message: (side, kind, text, time, reaction)  side: me | cl ; kind: text | file | day | fwd
 REVIEWS=[

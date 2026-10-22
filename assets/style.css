@@ -477,3 +477,15 @@ a.inline:hover{color:var(--carn)}
 .fly video::-webkit-media-controls,.fly video::-webkit-media-controls-start-playback-button,.fly video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
 
 .fly video[hidden]{display:none}
+
+/* phone: drawings sit on their own small line next to the heading instead of over the letters */
+@media (max-width:720px){
+  .sketch-deco{position:relative;inset:auto;display:block;width:58px;margin:0 0 6px auto;transform:none}
+  .sk-skills,.sk-faq{margin:14px 0 0}
+  .sk-pull{position:absolute;left:-4px;bottom:-34px;width:150px;margin:0}
+  .dark-sec .pull{padding-bottom:28px}
+  .sk-price{position:absolute;left:-19px;right:auto;top:-14px;width:214px;height:56px;margin:0}
+  .sk-about{position:absolute;right:-24px;top:-44px;width:88px;margin:0;transform:rotate(10deg)}
+  .sk-reviews{position:absolute;right:4px;top:-58px;width:46px;margin:0}
+  .sk-hero,.sk-cta{display:none}
+}
