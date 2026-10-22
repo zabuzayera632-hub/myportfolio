@@ -266,15 +266,14 @@ footer{padding:20px 0 28px;overflow:hidden}
   .nav .wrap{padding-left:16px;height:58px}
   .intro-top{padding-top:24px;font-size:var(--t-small)}
   .intro-top .br:last-child{display:none}
-  .scene{height:108vw;max-height:560px}
-  .me{width:30vw;top:auto;bottom:0;translate:-50% 0}
-  .wordmark{inset:auto 0;top:30%}
-  .wordmark{font-size:19.5vw}
-  .p1{left:1%;top:2%;width:36%}
-  .p2{left:2%;bottom:3%;width:27%}
+  .scene{height:98vw;max-height:none}
+  .wordmark{inset:auto 0;top:0;font-size:19.5vw;line-height:1}
+  .me{width:40vw;top:24vw;bottom:auto;translate:-50% 0}
+  .p1{left:1%;top:29vw;width:30%}
+  .p4{right:1%;top:26vw;width:28%}
+  .p2{left:3%;top:63vw;width:27%}
+  .p5{right:1%;top:71vw;width:33%}
   .p3,.p6{display:none}
-  .p4{right:2%;top:4%;width:27%}
-  .p5{right:1%;bottom:2%;width:38%}
   .fly .tag{font-size:.8125rem;left:6px;bottom:6px}
   .intro-bottom{padding:20px 0 56px}
   .intro-bottom h1{font-size:1.75rem;max-width:none}
@@ -379,7 +378,7 @@ html.lenis{scroll-behavior:auto}   /* Lenis does the smoothing; native smooth sc
 .sketch-deco{position:absolute;max-width:none;pointer-events:none;fill:none;stroke:var(--carn);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.85;z-index:1}
 .js .sketch-deco path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s cubic-bezier(.65,0,.35,1)}
 .js .sketch-deco.drawn path{stroke-dashoffset:0}
-.intro-bottom>div,.head,.pull,.about-photo,.split-head{position:relative}
+.intro-bottom>div,.head,.pull,.about-photo{position:relative}
 .price{position:relative}
 .sk-hero{width:96px;left:-108px;bottom:-12px;transform:rotate(-8deg)}
 .sk-about{width:104px;right:-62px;top:-58px;stroke:var(--seal);stroke-width:9;transform:rotate(10deg)}
@@ -473,3 +472,8 @@ a.inline:hover{color:var(--carn)}
 .notfound .wrap{position:relative}
 .notfound .lead{margin-top:16px}
 .sk-404{width:120px;right:8%;top:-30px;stroke-width:9}
+
+/* iPhone: no big native play button over the clips when autoplay is not allowed (e.g. Low Power Mode) — the poster shows instead */
+.fly video::-webkit-media-controls,.fly video::-webkit-media-controls-start-playback-button,.fly video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
+
+.fly video[hidden]{display:none}

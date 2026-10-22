@@ -32,7 +32,10 @@ document.querySelectorAll('[data-copy]').forEach(btn=>{const t=btn.textContent;b
 /* the little clips in the intro play only while the intro is on screen */
 (()=>{const vs=[...document.querySelectorAll('.fly video')],sc=document.querySelector('.scene');
   if(!vs.length||!sc)return;
-  const play=on=>vs.forEach(v=>{v.muted=true;if(on){const p=v.play();if(p)p.catch(()=>{})}else v.pause()});
+  /* if a phone refuses to play a clip (Low Power Mode, data saver), hide it so the cover image below shows, not a play button */
+  const drop=v=>{v.hidden=true};
+  vs.forEach(v=>v.addEventListener('error',()=>drop(v)));
+  const play=on=>vs.forEach(v=>{if(v.hidden)return;v.muted=true;if(on){const p=v.play();if(p)p.catch(e=>{if(e&&e.name==='NotAllowedError'||e&&e.name==='NotSupportedError')drop(v)})}else v.pause()});
   if('IntersectionObserver' in window)new IntersectionObserver(es=>play(es[0].isIntersecting)).observe(sc);else play(true);
 })();
 /* intro: the scattered work drifts a little with the pointer */
